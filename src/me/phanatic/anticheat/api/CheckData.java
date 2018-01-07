@@ -1,15 +1,15 @@
-package me.phanatic.anticheat;
+package me.phanatic.anticheat.api;
 
 import org.bukkit.entity.Player;
 
 /**
  * A sort of data store class
  */
-public class checkAdd {
+public class CheckData {
 	
-	public Player player;
+	private Player player;
 
-	public int checks;
+	private int checks;
 
     /**
      * Set player refrence

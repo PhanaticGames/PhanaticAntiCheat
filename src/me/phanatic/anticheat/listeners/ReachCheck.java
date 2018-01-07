@@ -1,17 +1,13 @@
-package me.phanatic.anticheat.combat;
+package me.phanatic.anticheat.listeners;
 
-import java.util.HashMap;
-
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import me.phanatic.anticheat.PAC;
+import me.phanatic.anticheat.api.CheckData;
+import org.bukkit.ChatColor;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import me.phanatic.anticheat.PAC;
-import me.phanatic.anticheat.checkAdd;
-import net.md_5.bungee.api.ChatColor;
 
 /**
  * The primary listener class for reach checks
@@ -40,9 +36,6 @@ public class ReachCheck implements Listener {
             MaxReach = 3.9649536556060863;
         }
 
-
-        //playerWhoHit.sendMessage("" + distance);
-
         if (getPing(playerWhoHit) >= 100 && getPing(playerWhoHit) < 200) {
             MaxReach += 0.2;
         } else if (getPing(playerWhoHit) >= 200 && getPing(playerWhoHit) < 250) {
@@ -59,7 +52,7 @@ public class ReachCheck implements Listener {
 
         if (distance > MaxReach) {
             if (PAC.playerReachDat.containsKey(playerWhoHit)) {
-                checkAdd playerReach = PAC.playerReachDat.get(playerWhoHit);
+                CheckData playerReach = PAC.playerReachDat.get(playerWhoHit);
                 playerReach.addCheck();
                 // TODO, ALL PHANATIC MESSAGES MUST BE READ FROM CONFIG
                 playerWhoHit.sendMessage(ChatColor.RED + "You Have Flagged The Phanatic Anticheat");

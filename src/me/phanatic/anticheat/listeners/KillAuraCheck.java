@@ -1,4 +1,4 @@
-package me.phanatic.anticheat.combat;
+package me.phanatic.anticheat.listeners;
 
 public class KillAuraCheck {
 
