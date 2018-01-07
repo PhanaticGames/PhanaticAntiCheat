@@ -8,21 +8,30 @@ import org.bukkit.entity.Player;
 public class checkAdd {
 	
 	public Player player;
+
 	public int checks;
-	//sets player
+
+    /**
+     * Set player refrence
+     * @param p Player who hit
+     */
 	public void setPlayer(Player p) {
 		player = p;
 	}
-	//adds checks when player is thought to be cheating 
+
+	/**
+	 * Add 1 check to the players current check count
+	 */
 	public void addCheck() {
 		checks = checks++;
 	}
 
-	// Make getPlayer
+    /**
+     * Get the current check count
+     * @return int Check count for the player
+     */
 	public int getChecks() {
 		return checks;
 	}
-		//gets the amount of checks a player has
-		
 
 }
