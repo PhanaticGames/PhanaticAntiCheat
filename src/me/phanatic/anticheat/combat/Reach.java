@@ -1,4 +1,4 @@
-package me.phanatic.anticheat;
+package me.phanatic.anticheat.combat;
 
 import java.util.HashMap;
 
@@ -10,10 +10,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.phanatic.anticheat.Main;
+import me.phanatic.anticheat.checkAdd;
+import net.md_5.bungee.api.ChatColor;
+
 /**
  * The primary listeners class
  */
-public class Reach implements Listener {
+public class Reach implements Listener{
 
 	@EventHandler
 	public void onEntity(EntityDamageByEntityEvent event) {
@@ -22,10 +26,11 @@ public class Reach implements Listener {
 		if (!(event.getEntity() instanceof Player))
 			return;
 
-		Player playerWhoHit = (Player) event.getDamager();
-		Player playerHit = (Player) event.getEntity();
-
+		  Player playerWhoHit = (Player) event.getDamager();
+		  Player playerHit = (Player) event.getEntity();
+	
 		double distance = playerWhoHit.getLocation().distance(playerHit.getLocation());
+		
 		double MaxReach = 3.4713193295089497;
 		
 		if(playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 0){
@@ -37,7 +42,7 @@ public class Reach implements Listener {
 			}
 		
 		
-		playerWhoHit.sendMessage("" + distance);
+		//playerWhoHit.sendMessage("" + distance);
 		
 		if (getPing(playerWhoHit) >= 100 && getPing(playerWhoHit) < 200) {
 			MaxReach += 0.2; 
@@ -55,22 +60,20 @@ public class Reach implements Listener {
 
 		if (distance > MaxReach) {
 			if (Main.playerReachDat.containsKey(playerWhoHit)) {
-				ReachAdd playerReach = Main.playerReachDat.get(playerWhoHit);
+				checkAdd playerReach = Main.playerReachDat.get(playerWhoHit);
 				playerReach.addCheck();
-				playerWhoHit.sendMessage("REACH");
+				playerWhoHit.sendMessage(ChatColor.RED + "You Have Flagged The Phanatic Anticheat");
 			}
 
 			else {
-				ReachAdd reach = new ReachAdd();
+				checkAdd reach = new checkAdd();
 				reach.setPlayer(playerWhoHit);
 				Main.playerReachDat.put(playerWhoHit, reach);
 			}
 		}
-		if (Main.playerReachDat.get(playerWhoHit).getChecks() == 15) {
-			playerWhoHit.kickPlayer("US Customs");
-			// send message
-		}
+
 	}
+
 
 	public int getPing(Player player) {
 		return ((CraftPlayer) player).getHandle().ping;
