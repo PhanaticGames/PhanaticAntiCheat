@@ -1,4 +1,4 @@
-package me.phanatic.anticheat.api;
+package src.me.phanatic.anticheat.api;
 
 import org.bukkit.entity.Player;
 
@@ -6,15 +6,20 @@ import org.bukkit.entity.Player;
  * A sort of data store class
  */
 public class CheckData {
-	
+
 	private Player player;
-
+	/*
+	 *Declaring Variables 
+	 */
 	private int checks;
+	private int swings;
 
-    /**
-     * Set player refrence
-     * @param p Player who hit
-     */
+	/**
+	 * Set player reference
+	 * 
+	 * @param p
+	 *            Player who hit
+	 */
 	public void setPlayer(Player p) {
 		player = p;
 	}
@@ -26,12 +31,25 @@ public class CheckData {
 		checks = checks++;
 	}
 
-    /**
-     * Get the current check count
-     * @return int Check count for the player
-     */
+	/*
+	 * Adds 5 checks to the players current check amount
+	 */
+	public void blantentAddCheck() {
+
+		checks += 5;
+	}
+
+	/**
+	 * Get the current check count
+	 * 
+	 * @return int Check count for the player
+	 */
 	public int getChecks() {
 		return checks;
+	}
+
+	public void addKACheck() {
+		swings = swings++;
 	}
 
 }

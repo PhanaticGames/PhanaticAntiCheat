@@ -1,7 +1,7 @@
-package me.phanatic.anticheat;
+package src.me.phanatic.anticheat;
 
-import me.phanatic.anticheat.api.CheckData;
-import me.phanatic.anticheat.listeners.ReachCheck;
+import src.me.phanatic.anticheat.api.CheckData;
+import src.me.phanatic.anticheat.listeners.ReachCheck;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 

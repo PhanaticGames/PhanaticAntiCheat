@@ -1,5 +1,5 @@
-author: GuardHouse
+author: GuardHouse & IMLEADER
 version: 1.0.0
-main: me.phanatic.anticheat.Main
-description: Reach check for phanatic
-name: Reach
+main: src.me.phanatic.anticheat.PAC
+description: PAC
+name: PAC
