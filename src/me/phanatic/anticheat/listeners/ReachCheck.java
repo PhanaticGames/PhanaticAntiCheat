@@ -35,16 +35,15 @@ public class ReachCheck implements Listener {
 		if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 2) {
 			MaxReach = 3.9649536556060863;
 		}
-		
-		if(playerWhoHit.getWalkSpeed() == 5.7) 
+		double walkspeed = playerWhoHit.getWalkSpeed();
+		if(playerWhoHit.getWalkSpeed() == .2) 
 		{
 			MaxReach = 4;
+			
 		}
 		
-		if(playerWhoHit.getWalkSpeed() == 4.4) 
-		{
-			MaxReach = 3.7;
-		}
+
+		playerWhoHit.sendMessage("" +ChatColor.LIGHT_PURPLE + walkspeed);
 		if (getPing(playerWhoHit) >= 100 && getPing(playerWhoHit) < 200) {
 			MaxReach += 0.2;
 		} else if (getPing(playerWhoHit) >= 200 && getPing(playerWhoHit) < 250) {
