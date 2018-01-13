@@ -1,7 +1,7 @@
-package src.me.phanatic.anticheat;
+package me.phanatic.anticheat;
 
-import src.me.phanatic.anticheat.api.CheckData;
-import src.me.phanatic.anticheat.listeners.ReachCheck;
+import me.phanatic.anticheat.api.CheckData;
+import me.phanatic.anticheat.listeners.ReachCheck;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,6 +9,12 @@ import java.util.HashMap;
 
 public class PAC extends JavaPlugin {
 
+    /**
+     * This can be accessed ANYWHERE
+     * Hint what ReachCheck does. This is static
+     * This PAC.playerReachDat can be accessed from ANY class
+     * So, In KA check, just use PAC.playerReachDat.get(PLAYER);
+     */
 	public static HashMap<Player, CheckData> playerReachDat = new HashMap<>();
 
 	@Override

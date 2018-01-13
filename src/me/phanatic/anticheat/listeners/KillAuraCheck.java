@@ -1,19 +1,14 @@
-package src.me.phanatic.anticheat.listeners;
-import src.me.phanatic.anticheat.api.CheckData;
+package me.phanatic.anticheat.listeners;
 
 /*
- *The primary listener call for killaura  
+ *The primary listener call for killaura
  */
 public class KillAuraCheck {
 
-	public static void checkA() 
-	{
-		int swings = 0;
-		/*if(Action.LEFT_CLICK_AIR && .getAction() == Action.LEFT_CLICK_BLOCK){
-			
-		}*/
-		
-		
-	}
+    public static void checkA() {
+        int swings = 0;
+
+
+    }
 
 }
