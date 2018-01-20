@@ -8,8 +8,10 @@ import org.bukkit.entity.Player;
 public class CheckData {
 
     private Player player;
-    private int checks;
-    private int swings;
+    private Player target;
+    private int checks = 0;
+    private int swings = 0;
+    private double lastDiff = 0;
 
     /**
      * Set player reference
@@ -47,4 +49,19 @@ public class CheckData {
         swings = swings++;
     }
 
+    public Player getTarget() {
+        return target;
+    }
+
+    public void setTarget(Player p) {
+        this.target = p;
+    }
+
+    public double getLastDiff() {
+        return lastDiff;
+    }
+
+    public void setLastDiff(double lastDiff) {
+        this.lastDiff = lastDiff;
+    }
 }
