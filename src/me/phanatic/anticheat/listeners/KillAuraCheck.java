@@ -1,11 +1,15 @@
+
 package src.me.phanatic.anticheat.listeners;
+
+
 
 import src.me.phanatic.anticheat.api.CheckData;
 import src.me.phanatic.anticheat.listeners.ReachCheck;
 /*
- *The primary listener call for killaura  
+ *The primary listener call for killaura
  */
 public class KillAuraCheck {
+
 
 	public static void checkA() {
 		int swings = 0;
@@ -26,5 +30,12 @@ public class KillAuraCheck {
 		}
 
 	}
+
+    public static void checkA() {
+        int swings = 0;
+
+
+    }
+
 
 }

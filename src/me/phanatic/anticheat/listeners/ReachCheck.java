@@ -1,18 +1,19 @@
-package src.me.phanatic.anticheat.listeners;
+package me.phanatic.anticheat.listeners;
 
-import src.me.phanatic.anticheat.PAC;
-import src.me.phanatic.anticheat.api.CheckData;
+import me.phanatic.anticheat.PAC;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import src.me.phanatic.anticheat.api.CheckData;
 
 /**
  * The primary listener class for reach checks
  */
 public class ReachCheck implements Listener {
+<<<<<<< HEAD
 
 	@EventHandler
 	public static void onDamage(EntityDamageByEntityEvent event) {
@@ -28,9 +29,35 @@ public class ReachCheck implements Listener {
 	public static void reachChecking() {
 		
 
+=======
 
-		double distance = playerWhoHit.getLocation().distance(playerHit.getLocation());
+    @EventHandler
+    public void onEntity(EntityDamageByEntityEvent event) {
+        if (!(event.getDamager() instanceof Player))
+            return;
+        if (!(event.getEntity() instanceof Player))
+            return;
 
+        Player playerWhoHit = (Player) event.getDamager();
+        Player playerHit = (Player) event.getEntity();
+
+        double distance = playerWhoHit.getLocation().distance(playerHit.getLocation());
+
+        double MaxReach = 3.4713193295089497;
+        playerWhoHit.sendMessage("" + distance);
+        if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 0) {
+            MaxReach = 3.4713193295089497;
+        }
+>>>>>>> 4aee5ed5760f3b43b34420a556194587b5246f42
+
+        if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 2) {
+            MaxReach = 3.9649536556060863;
+        }
+        double walkspeed = playerWhoHit.getWalkSpeed();
+        if (playerWhoHit.getWalkSpeed() == .2) {
+            MaxReach = 4;
+
+<<<<<<< HEAD
 		double MaxReach = 3.4713193295089497;
 		//playerWhoHit.sendMessage("" + distance);
 		if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 0) {
@@ -60,25 +87,53 @@ public class ReachCheck implements Listener {
 		} else if (getPing(playerWhoHit) > 400) {
 			return;
 		}
+=======
+        }
 
-		if (distance > MaxReach) {
-			if (PAC.playerReachDat.containsKey(playerWhoHit)) {
-				CheckData playerReach = PAC.playerReachDat.get(playerWhoHit);
-				playerReach.addCheck();
-				// TODO, ALL PHANATIC MESSAGES MUST BE READ FROM CONFIG
-				playerWhoHit.sendMessage(ChatColor.RED + "You Have Flagged The Phanatic Anticheat");
-			} else {
-				CheckData reach = new CheckData();
-				reach.setPlayer(playerWhoHit);
-				PAC.playerReachDat.put(playerWhoHit, reach);
-			}
 
-		}
+        playerWhoHit.sendMessage("" + ChatColor.LIGHT_PURPLE + walkspeed);
+        if (getPing(playerWhoHit) >= 100 && getPing(playerWhoHit) < 200) {
+            MaxReach += 0.2;
+        } else if (getPing(playerWhoHit) >= 200 && getPing(playerWhoHit) < 250) {
+            MaxReach += 0.4;
+        } else if (getPing(playerWhoHit) >= 250 && getPing(playerWhoHit) < 300) {
+            MaxReach += 0.8;
+        } else if (getPing(playerWhoHit) >= 300 && getPing(playerWhoHit) < 350) {
+            MaxReach += 1.2;
+        } else if (getPing(playerWhoHit) >= 350 && getPing(playerWhoHit) < 400) {
+            MaxReach += 1.5;
+        } else if (getPing(playerWhoHit) > 400) {
+            return;
+        }
+>>>>>>> 4aee5ed5760f3b43b34420a556194587b5246f42
 
+        if (distance > MaxReach) {
+            if (PAC.playerReachDat.containsKey(playerWhoHit)) {
+                CheckData playerReach = PAC.playerReachDat.get(playerWhoHit);
+                playerReach.addCheck();
+                // TODO, ALL PHANATIC MESSAGES MUST BE READ FROM CONFIG
+                playerWhoHit.sendMessage(ChatColor.RED + "You Have Flagged The Phanatic Anticheat");
+            } else {
+                CheckData reach = new CheckData();
+                reach.setPlayer(playerWhoHit);
+                PAC.playerReachDat.put(playerWhoHit, reach);
+            }
+
+        }
+
+<<<<<<< HEAD
 	}
 }
 	// TODO, use NMS based class loading
 	public static int getPing(Player player) {
 		return ((CraftPlayer) player).getHandle().ping;
 	}
+=======
+    }
+
+    // TODO, use NMS based class loading
+    public int getPing(Player player) {
+        return ((CraftPlayer) player).getHandle().ping;
+    }
+>>>>>>> 4aee5ed5760f3b43b34420a556194587b5246f42
 }

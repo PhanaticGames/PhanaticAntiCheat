@@ -1,14 +1,14 @@
-package src.me.phanatic.anticheat.api;
+package me.phanatic.anticheat.api;
 
+import me.phanatic.anticheat.PAC;
 import org.bukkit.entity.Player;
-
 import net.md_5.bungee.api.ChatColor;
-import src.me.phanatic.anticheat.PAC;
 
 public class BanAPI {
 
     public static void checkReachCount(Player playerWhoHit) {
-        if (PAC.playerReachDat.get(playerWhoHit).getChecks() == 15) {
+        CheckData cD = PAC.playerReachDat.get(playerWhoHit);
+        if (cD.getChecks() == 15) {
         	playerWhoHit.kickPlayer(ChatColor.RED + "You've been caught cheating!");
         }
     }
