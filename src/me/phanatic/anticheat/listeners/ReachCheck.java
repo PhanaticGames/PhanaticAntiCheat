@@ -13,37 +13,40 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
  * The primary listener class for reach checks
  */
 public class ReachCheck implements Listener {
-	
+
 	@EventHandler
-	public void onEntity(EntityDamageByEntityEvent event) {
+	public static void onDamage(EntityDamageByEntityEvent event) {
 		if (!(event.getDamager() instanceof Player))
 			return;
 		if (!(event.getEntity() instanceof Player))
 			return;
 
-		Player playerWhoHit = (Player) event.getDamager();
-		Player playerHit = (Player) event.getEntity();
+		static Player playerHit = (Player) event.getEntity();
+		static Player playerWhoHit = (Player) event.getDamager();
+
+	}
+	public static void reachChecking() {
+		
+
 
 		double distance = playerWhoHit.getLocation().distance(playerHit.getLocation());
 
 		double MaxReach = 3.4713193295089497;
-		playerWhoHit.sendMessage("" + distance);
+		//playerWhoHit.sendMessage("" + distance);
 		if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 0) {
 			MaxReach = 3.4713193295089497;
 		}
 
-		if (playerWhoHit.getLocation().getY() - playerHit.getLocation().getY() == 2) {
+		if (playerHit.getLocation().getY() - playerWhoHit.getLocation().getY() == 2) {
 			MaxReach = 3.9649536556060863;
 		}
 		double walkspeed = playerWhoHit.getWalkSpeed();
-		if(playerWhoHit.getWalkSpeed() == .2) 
-		{
+		if (playerWhoHit.getWalkSpeed() == .2) {
 			MaxReach = 4;
-			
-		}
-		
 
-		playerWhoHit.sendMessage("" +ChatColor.LIGHT_PURPLE + walkspeed);
+		}
+
+		playerWhoHit.sendMessage("" + ChatColor.LIGHT_PURPLE + walkspeed);
 		if (getPing(playerWhoHit) >= 100 && getPing(playerWhoHit) < 200) {
 			MaxReach += 0.2;
 		} else if (getPing(playerWhoHit) >= 200 && getPing(playerWhoHit) < 250) {
@@ -73,9 +76,9 @@ public class ReachCheck implements Listener {
 		}
 
 	}
-
+}
 	// TODO, use NMS based class loading
-	public int getPing(Player player) {
+	public static int getPing(Player player) {
 		return ((CraftPlayer) player).getHandle().ping;
 	}
 }
